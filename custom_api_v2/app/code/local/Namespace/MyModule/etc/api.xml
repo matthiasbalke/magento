@@ -2,23 +2,44 @@
 <config>
     <api>
 	<resources>
+	    <!-- the resource name is arbitrary -->
 	    <myModule translate="title" module="Namespace_MyModule">
 		<title>MyModule API</title>
+		<!-- This is the Path to your Api.php class
+		     (Namespace/MyModule/Model/Api.php)
+		-->
 		<model>Namespace_MyModule/Api</model>
+		<!-- This is the associated acl name,
+	             it is arbitrary, but it has to match the
+		     acl section (see below)
+		-->
 		<acl>myModule</acl>
 		<methods>
 		    <!-- methods must exist in model class! -->
 		    <helloWorld translate="title" module="Namespace_MyModule">
 			<title>send Hello World</title>
+			<!-- This is the associated acl path,
+			     it is arbitrary, but it has to match the
+			     acl section (see below)
+			-->
 			<acl>myModule/protected/helloWorld</acl>
 		    </helloWorld>
+		    <!-- This is the methodname of the exported method -->
 		    <info translate="title" module="Namespace_MyModule">
 			<title>get an info</title>
+			<!-- This is the associated acl path,
+			     it is arbitrary, but it has to match the
+			     acl section (see below)
+			-->
 			<!--<acl>myModule/unprotected/info</acl>-->
 		    </info>
 		</methods>
 
+		<!-- definition of soap fault codes -->
 		<faults module="Namespace_MyModule">
+		    <!-- the fault code name (misc_error),
+			 code (100) and message are arbitrary
+		    -->
 		    <misc_error>
 			<code>100</code>
 			<message>Data Invalid. Details in fault message.</message>
@@ -28,7 +49,9 @@
 	</resources>
 
 	<!-- you have to add the v2 section and the prefix
-	     to enable api v2 support -->
+	     to be able to use api v2 support
+	     the prefix is arbitrary
+	-->
 	<v2>
 	    <resources_function_prefix>
 		<myModule>prefix</myModule>
@@ -48,17 +71,29 @@
 		    <title>MyModule API</title>
 		    <!-- set the order of the Role Resource Listing (Backend)-->
 		    <sort_order>1</sort_order>
-		    
+
+
+		    <moreMethods>
+			<title>moreMethods</title>
+		    </moreMethods>
+		    <!-- you can create sub Roles like this -->
 		    <protected translate="title" module="Namespace_MyModule">
+			<!-- title of the subrole -->
 			<title>Protected</title>
+			<!-- name of the method -->
 			<helloWorld translate="title" module="Namespace_MyModule">
+			    <!-- title of the method -->
 			    <title>hello World</title>
 			</helloWorld>
 		    </protected>
 
+		    <!-- you can create sub Roles like this -->
 		    <unprotected translate="title" module="Namespace_MyModule">
+			<!-- title of the subrole -->
 			<title>Unprotected</title>
+			<!-- name of the method -->
 			<info translate="title" module="Namespace_MyModule">
+			    <!-- title of the method -->
 			    <title>Info</title>
 			</info>
 		    </unprotected>
