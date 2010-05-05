@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	     xmlns:typens="http://local.magento14/scripts/GenerateWsdl.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	     xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"
+	     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+	<xsd:schema targetNamespace="urn:{{var wsdl.name}}">
+	    <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+	</xsd:schema>
+    </types>
+
+    <portType name="{{var wsdl.handler}}PortType">
+	<operation name="prefixHelloWorld">
+	    <documentation>returns hello World</documentation>
+	    <input message="typens:prefixHelloWorldIn" />
+	    <output message="typens:prefixHelloWorldOut" />
+	</operation>
+    </portType>
+
+    <portType name="{{var wsdl.handler}}PortType">
+	<operation name="prefixInfo">
+	    <documentation>returns some unprotected info</documentation>
+	    <input message="typens:prefixInfoIn" />
+	    <output message="typens:prefixInfoOut" />
+	</operation>
+    </portType>
+
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+	<operation name="prefixHelloWorld">
+	    <input>
+		<soap:body use="literal" namespace="urn:Magento" />
+	    </input>
+	    <output>
+		<soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+	    </output>
+	</operation>
+
+	<operation name="prefixInfo">
+	    <input>
+		<soap:body use="literal" namespace="urn:Magento" />
+	    </input>
+	    <output>
+		<soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+	    </output>
+	</operation>
+    </binding>
+
+    <!-- define input and output for method -->
+    <message name="prefixHelloWorldIn">
+	<part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="prefixHelloWorldOut">
+	<part name="result" type="xsd:string" />
+    </message>
+
+    <message name="prefixInfoIn">
+	<part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="prefixInfoOut">
+	<part name="result" type="xsd:string" />
+    </message>
+
+    <service name="{{var wsdl.name}}Service">
+	<port name="{{var wsdl.handler}}PortType" binding="typens:{{var wsdl.handler}}Binding">
+	    <soap:address location="{{var wsdl.url}}" />
+	</port>
+    </service>
+</definitions>

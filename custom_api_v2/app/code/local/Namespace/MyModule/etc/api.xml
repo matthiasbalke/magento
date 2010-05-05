@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <api>
+	<resources>
+	    <myModule translate="title" module="Namespace_MyModule">
+		<title>MyModule API</title>
+		<model>Namespace_MyModule/Api</model>
+		<acl>myModule</acl>
+		<methods>
+		    <!-- methods must exist in model class! -->
+		    <helloWorld translate="title" module="Namespace_MyModule">
+			<title>send Hello World</title>
+			<acl>myModule/protected/helloWorld</acl>
+		    </helloWorld>
+		    <info translate="title" module="Namespace_MyModule">
+			<title>get an info</title>
+			<!--<acl>myModule/unprotected/info</acl>-->
+		    </info>
+		</methods>
+
+		<faults module="Namespace_MyModule">
+		    <misc_error>
+			<code>100</code>
+			<message>Data Invalid. Details in fault message.</message>
+		    </misc_error>
+		</faults>
+	    </myModule>
+	</resources>
+
+	<!-- you have to add the v2 section and the prefix
+	     to enable api v2 support -->
+	<v2>
+	    <resources_function_prefix>
+		<myModule>prefix</myModule>
+	    </resources_function_prefix>
+	</v2>
+
+	<!-- set the acls here
+	     be aware that you muss create a default (at least: empty) Helper
+	     to use the translation tag! (Helper/Data.php), otherwise you
+	     will get an errorpage (you find the report in
+	     {base_dir}/var/report/<report_id>)
+	-->
+	<acl>
+	    <resources>
+		<myModule translate="title" module="Namespace_MyModule">
+		    <!-- set the title of the Role Resource Listing (Backend)-->
+		    <title>MyModule API</title>
+		    <!-- set the order of the Role Resource Listing (Backend)-->
+		    <sort_order>1</sort_order>
+		    
+		    <protected translate="title" module="Namespace_MyModule">
+			<title>Protected</title>
+			<helloWorld translate="title" module="Namespace_MyModule">
+			    <title>hello World</title>
+			</helloWorld>
+		    </protected>
+
+		    <unprotected translate="title" module="Namespace_MyModule">
+			<title>Unprotected</title>
+			<info translate="title" module="Namespace_MyModule">
+			    <title>Info</title>
+			</info>
+		    </unprotected>
+		</myModule>
+	    </resources>
+	</acl>
+    </api>
+</config>

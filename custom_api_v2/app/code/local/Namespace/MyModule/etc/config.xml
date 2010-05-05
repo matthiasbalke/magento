@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+	<Namespace_MyModule>
+	    <version>0.1.4</version>
+	</Namespace_MyModule>
+    </modules>
+    
+    <global>
+	<models>
+	    <Namespace_MyModule>
+		<class>Namespace_MyModule_Model</class>
+	    </Namespace_MyModule>
+	</models>
+
+	<helpers>
+	    <Namespace_MyModule>
+		<class>Namespace_MyModule_Helper</class>
+	    </Namespace_MyModule>
+	</helpers>
+	
+	<resources>
+	    <Namespace_MyModule_setup>
+		<setup>
+		    <module>Namespace_MyModule</module>
+		    <class>Mage_Eav_Model_Entity_Setup</class>
+		</setup>
+
+		<connection>
+		    <use>default_setup</use>
+		</connection>
+	    </Namespace_MyModule_setup>
+
+	    <Namespace_MyModule_write>
+		<connection>
+		    <use>default_write</use>
+		</connection>
+	    </Namespace_MyModule_write>
+
+	    <Namespace_MyModule_read>
+		<connection>
+		    <use>default_read</use>
+		</connection>
+	    </Namespace_MyModule_read>
+	</resources>
+    </global>
+
+    <adminhtml>
+	<translate>
+	    <modules>
+		<Namespace_MyModule>
+		    <files>
+			<default>Namespace_MyModule.csv</default>
+		    </files>
+		</Namespace_MyModule>
+	    </modules>
+	</translate>
+    </adminhtml>
+</config>
