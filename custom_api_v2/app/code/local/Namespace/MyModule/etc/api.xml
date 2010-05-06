@@ -31,7 +31,7 @@
 			     it is arbitrary, but it has to match the
 			     acl section (see below)
 			-->
-			<!--<acl>myModule/unprotected/info</acl>-->
+			<acl>myModule/protected/info</acl>
 		    </info>
 		</methods>
 
@@ -72,10 +72,6 @@
 		    <!-- set the order of the Role Resource Listing (Backend)-->
 		    <sort_order>1</sort_order>
 
-
-		    <moreMethods>
-			<title>moreMethods</title>
-		    </moreMethods>
 		    <!-- you can create sub Roles like this -->
 		    <protected translate="title" module="Namespace_MyModule">
 			<!-- title of the subrole -->
@@ -85,18 +81,11 @@
 			    <!-- title of the method -->
 			    <title>hello World</title>
 			</helloWorld>
-		    </protected>
-
-		    <!-- you can create sub Roles like this -->
-		    <unprotected translate="title" module="Namespace_MyModule">
-			<!-- title of the subrole -->
-			<title>Unprotected</title>
-			<!-- name of the method -->
 			<info translate="title" module="Namespace_MyModule">
 			    <!-- title of the method -->
 			    <title>Info</title>
 			</info>
-		    </unprotected>
+		    </protected>
 		</myModule>
 	    </resources>
 	</acl>

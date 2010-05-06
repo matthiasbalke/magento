@@ -1,4 +1,4 @@
 <?php
-class Namespace_Module_Model_Api_V2 extends Namespace_Module_Model_Api{
+class Namespace_MyModule_Model_Api_V2 extends Namespace_MyModule_Model_Api{
 
 }
